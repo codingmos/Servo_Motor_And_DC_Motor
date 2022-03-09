@@ -1,0 +1,236 @@
+MPASM  5.20                   FATLCODEEEE.ASM   2-14-2016  1:25:04         PAGE  1
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00001 #include P16F84A.inc
+                      00001         LIST
+                      00002 ; P16F84A.INC  Standard Header File, Version 2.00    Microchip Technology, Inc.
+                      00134         LIST
+Warning[205]: Found directive in column 1. (__CONFIG)
+2007   3FF2           00002 __CONFIG  _CP_OFF & _WDT_OFF & _PWRTE_ON & _HS_OSC
+                      00003 
+Warning[205]: Found directive in column 1. (CBLOCK)
+                      00004 CBLOCK 0x0c
+  0000000C            00005        COUNT_LED2
+  0000000D            00006        COUNT_I
+  0000000E            00007        COUNT_J
+Warning[205]: Found directive in column 1. (ENDC)
+                      00008 ENDC
+                      00009 
+Warning[205]: Found directive in column 1. (org)
+0000                  00010 org 0x00
+Warning[203]: Found opcode in column 1. (bsf)
+0000   1683           00011 bsf STATUS,RP0
+Warning[203]: Found opcode in column 1. (movlw)
+0001   3000           00012 movlw 0x00
+Warning[203]: Found opcode in column 1. (movwf)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0002   0085           00013 movwf TRISA
+Warning[203]: Found opcode in column 1. (movlw)
+0003   3081           00014 movlw 0x81
+Warning[203]: Found opcode in column 1. (movwf)
+Message[302]: Register in operand not in bank 0.  Ensure that bank bits are correct.
+0004   0086           00015 movwf TRISB
+Warning[203]: Found opcode in column 1. (movlw)
+0005   3005           00016 movlw 0x05
+Warning[203]: Found opcode in column 1. (movwf)
+0006   008C           00017 movwf COUNT_LED2
+Warning[203]: Found opcode in column 1. (bcf)
+0007   1283           00018 bcf STATUS, RP0
+                      00019 
+                      00020  
+Warning[203]: Found opcode in column 1. (bcf)
+0008   1085           00021 bcf PORTA, 1 ;added
+                      00022 ;bcf PORTA, 2
+                      00023 ;bcf PORTB, 6
+                      00024 ;bcf PORTB, 5
+                      00025 ;bcf PORTB, 4
+                      00026 ;bcf PORTB, 3
+                      00027 ;bcf PORTB, 2
+                      00028 ;bcf PORTB, 1
+                      00029 
+                      00030 
+0009                  00031 start
+Warning[203]: Found opcode in column 1. (bcf)
+0009   1005           00032 bcf PORTA, 0 ; added
+                      00033 ;bcf PORTA, 3
+                      00034 ;bcf PORTA, 4
+MPASM  5.20                   FATLCODEEEE.ASM   2-14-2016  1:25:04         PAGE  2
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+                      00035 
+000A                  00036 begin
+Warning[203]: Found opcode in column 1. (btfss)
+000A   1C06           00037 btfss PORTB, 0 ;btfss PORTB, 7
+Warning[203]: Found opcode in column 1. (call)
+000B   2015           00038 call Delay
+Warning[203]: Found opcode in column 1. (btfss)
+000C   1C06           00039 btfss PORTB, 0 ;btfss PORTB, 7 
+Warning[203]: Found opcode in column 1. (goto)
+000D   280A           00040 goto begin
+Warning[203]: Found opcode in column 1. (bsf)
+000E   1405           00041 bsf PORTA, 0
+                      00042 ;bsf PORTA, 1
+                      00043 ;bsf PORTA, 3
+                      00044 ;bsf PORTA, 4
+                      00045 ;bsf PORTB, 6
+                      00046 ;bsf PORTB, 5
+                      00047 ;bsf PORTB, 4
+                      00048 ;bsf PORTB, 3
+                      00049 ;bsf PORTB, 2
+                      00050 ;bsf PORTB, 1
+                      00051 ;bsf PORTB, 0
+                      00052 
+000F                  00053 wait
+Warning[203]: Found opcode in column 1. (btfsc)
+000F   1806           00054 btfsc PORTB, 0
+                      00055 ;btfsc PORTB, 7
+Warning[203]: Found opcode in column 1. (goto)
+0010   280F           00056 goto wait
+                      00057 
+Warning[203]: Found opcode in column 1. (decfsz)
+Message[305]: Using default destination of 1 (file).
+0011   0B8C           00058 decfsz COUNT_LED2
+Warning[203]: Found opcode in column 1. (goto)
+0012   2809           00059 goto start
+Warning[203]: Found opcode in column 1. (bsf)
+0013   1485           00060 bsf PORTA, 1
+                      00061 ;bsf PORTA, 2
+Warning[203]: Found opcode in column 1. (goto)
+0014   2809           00062 goto start
+                      00063 
+0015                  00064 Delay
+Warning[203]: Found opcode in column 1. (movlw)
+Warning[202]: Argument out of range.  Least significant bits used.
+0015   3000           00065 movlw 200
+Warning[203]: Found opcode in column 1. (movwf)
+0016   008D           00066 movwf COUNT_I
+0017                  00067 LOOP_I
+Warning[203]: Found opcode in column 1. (movlw)
+Warning[202]: Argument out of range.  Least significant bits used.
+0017   3066           00068 movlw 166
+Warning[203]: Found opcode in column 1. (movwf)
+0018   008E           00069 movwf COUNT_J
+MPASM  5.20                   FATLCODEEEE.ASM   2-14-2016  1:25:04         PAGE  3
+
+
+LOC  OBJECT CODE     LINE SOURCE TEXT
+  VALUE
+
+0019                  00070 LOOP_J
+Warning[203]: Found opcode in column 1. (decfsz)
+0019   0B8E           00071 decfsz COUNT_J,F
+Warning[203]: Found opcode in column 1. (goto)
+001A   2819           00072 goto LOOP_J
+Warning[203]: Found opcode in column 1. (decfsz)
+001B   0B8D           00073 decfsz COUNT_I,F
+Warning[203]: Found opcode in column 1. (goto)
+001C   2817           00074 goto LOOP_I
+Warning[203]: Found opcode in column 1. (return)
+001D   0008           00075 return
+                      00076 
+Warning[205]: Found directive in column 1. (end)
+                      00077 end
+MPASM  5.20                   FATLCODEEEE.ASM   2-14-2016  1:25:04         PAGE  4
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+C                                 00000000
+COUNT_I                           0000000D
+COUNT_J                           0000000E
+COUNT_LED2                        0000000C
+DC                                00000001
+Delay                             00000015
+EEADR                             00000009
+EECON1                            00000088
+EECON2                            00000089
+EEDATA                            00000008
+EEIE                              00000006
+EEIF                              00000004
+F                                 00000001
+FSR                               00000004
+GIE                               00000007
+INDF                              00000000
+INTCON                            0000000B
+INTE                              00000004
+INTEDG                            00000006
+INTF                              00000001
+IRP                               00000007
+LOOP_I                            00000017
+LOOP_J                            00000019
+NOT_PD                            00000003
+NOT_RBPU                          00000007
+NOT_TO                            00000004
+OPTION_REG                        00000081
+PCL                               00000002
+PCLATH                            0000000A
+PORTA                             00000005
+PORTB                             00000006
+PS0                               00000000
+PS1                               00000001
+PS2                               00000002
+PSA                               00000003
+RBIE                              00000003
+RBIF                              00000000
+RD                                00000000
+RP0                               00000005
+RP1                               00000006
+STATUS                            00000003
+T0CS                              00000005
+T0IE                              00000005
+T0IF                              00000002
+T0SE                              00000004
+TMR0                              00000001
+TRISA                             00000085
+TRISB                             00000086
+W                                 00000000
+WR                                00000001
+WREN                              00000002
+WRERR                             00000003
+Z                                 00000002
+MPASM  5.20                   FATLCODEEEE.ASM   2-14-2016  1:25:04         PAGE  5
+
+
+SYMBOL TABLE
+  LABEL                             VALUE 
+
+_CP_OFF                           00003FFF
+_CP_ON                            0000000F
+_HS_OSC                           00003FFE
+_LP_OSC                           00003FFC
+_PWRTE_OFF                        00003FFF
+_PWRTE_ON                         00003FF7
+_RC_OSC                           00003FFF
+_WDT_OFF                          00003FFB
+_WDT_ON                           00003FFF
+_XT_OSC                           00003FFD
+__16F84A                          00000001
+__DEBUG                           1
+begin                             0000000A
+start                             00000009
+wait                              0000000F
+
+
+MEMORY USAGE MAP ('X' = Used,  '-' = Unused)
+
+0000 : XXXXXXXXXXXXXXXX XXXXXXXXXXXXXX-- ---------------- ----------------
+2000 : -------X-------- ---------------- ---------------- ----------------
+
+All other memory blocks unused.
+
+Program Memory Words Used:    30
+Program Memory Words Free:   994
+
+
+Errors   :     0
+Warnings :    37 reported,     0 suppressed
+Messages :     3 reported,     0 suppressed
+
+

@@ -1,0 +1,45 @@
+#include p16f84a.inc
+__CONFIG  _CP_OFF & _WDT_OFF & _PWRTE_ON & _HS_OSC
+
+org 0x00
+bsf STATUS,RP0
+movlw 0x00
+movwf TRISA
+movlw 0xff
+movwf TRISB
+movlw b'00000110'
+movwf OPTION_REG
+bcf STATUS, RP0
+
+start
+btfss INTCON, T0IF
+goto start
+movlw b'00000001'
+xorwf PORTA, F 
+goto check11
+
+check11
+btfss PORTB, 0
+goto check10
+btfss PORTB, 1
+goto check01
+movlw d'243'
+movwf TMR0
+bcf INTCON, T0IF
+goto start
+
+check10
+btfss PORTB, 1
+goto start
+movlw d'236'
+movwf TMR0
+bcf INTCON, T0IF
+goto start
+
+check01
+movlw d'216'
+movwf TMR0
+bcf INTCON, T0IF
+goto start
+
+end

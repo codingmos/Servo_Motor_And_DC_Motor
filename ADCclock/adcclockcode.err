@@ -1,0 +1,17 @@
+Warning[205] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 2 : Found directive in column 1. (__CONFIG)
+Warning[205] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 4 : Found directive in column 1. (org)
+Warning[203] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 5 : Found opcode in column 1. (bsf)
+Warning[203] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 6 : Found opcode in column 1. (movlw)
+Warning[203] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 7 : Found opcode in column 1. (movwf)
+Message[302] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 7 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 8 : Found opcode in column 1. (movlw)
+Warning[203] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 9 : Found opcode in column 1. (movwf)
+Message[302] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 9 : Register in operand not in bank 0.  Ensure that bank bits are correct.
+Warning[203] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 10 : Found opcode in column 1. (bcf)
+Warning[203] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 11 : Found opcode in column 1. (bsf)
+Warning[203] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 15 : Found opcode in column 1. (bsf)
+Warning[203] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 16 : Found opcode in column 1. (nop)
+Warning[203] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 17 : Found opcode in column 1. (nop)
+Warning[203] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 18 : Found opcode in column 1. (bcf)
+Warning[203] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 19 : Found opcode in column 1. (goto)
+Warning[205] C:\USERS\MOSTA\DESKTOP\ADCCLOCK\ADCCLOCKCODE.ASM 21 : Found directive in column 1. (end)
